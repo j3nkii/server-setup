@@ -37,10 +37,10 @@ app.listen(PORT, () => {
 //-------------------Server Side Code------------------\\
     //get data from server
     app.get('/url', (req, res) => {
-        res.send();
+        res.send(/*Data*/);
     });
     //send data to server
     app.post('/url', (req, res) => {
-        console.log(req.body);
+        console.log(req.body); //req.body will equal whatever was sent. 
         res.sendStatus(201)
     });
