@@ -1,0 +1,1 @@
+# Template for setting up Server. Will need to add things to it as knowlegde expands.
