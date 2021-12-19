@@ -15,32 +15,41 @@ app.listen(PORT, () => {
 })
 //----------------SERVER SETUP COMPLETE----------------\\
 
+//-------------------Server Side Code------------------\\
+    //get data from server
+    app.get('/-u-r-l', (req, res) => {
+        console.log(':SENDING:');
+        res.send(); //sends data
+    });
+    //send data to server
+    app.post('/u-r-l', (req, res) => {
+        console.log(req.body); //req.body will equal whatever was sent. 
+        if(!req.body.key || !req.body.key){ //data Validation
+            res.sendStatus(400); //bad data (RTFM) https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+            return; 
+        }
+        res.sendStatus(201)
+    });
+//-----------------------------------------------------\\
+
 //-------------------Client side Code-------------------\\
     //get data from server
     $.ajax({
         method: "GET",
-        url: "/url"
+        url: "/-u-r-l"
     }).then((response) => {
-        console.log(response);
-        handle(response)
+        console.log(':RESPONSE:', response);
     });
     //send data to server
     $.ajax({
         method: 'POST',
-        url: '/url',
-        data: newItem,
+        url: '/u-r-l',
+        data: {package: null},
     }).then((response) => {
-        console.log('POST', response);
+        console.log(':POST:', response);
+    })
+    .catch((err) => {
+        console.error('POST failed', err); //?
+        console.log('POST failed', err)
     });
 //-----------------------------------------------------\\
-
-//-------------------Server Side Code------------------\\
-    //get data from server
-    app.get('/url', (req, res) => {
-        res.send(/*Data*/);
-    });
-    //send data to server
-    app.post('/url', (req, res) => {
-        console.log(req.body); //req.body will equal whatever was sent. 
-        res.sendStatus(201)
-    });
