@@ -1,12 +1,16 @@
 // $ npm init --yes
 // $ npm install express
+// $ npm install pg
 // $ npm install nodemon
 // add .gitignore file and throw in     node_modules/
 const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
 const PORT = 5000;
+//Router  Shit
+const tacoRouter = require('relative-path', tacoRouter)
 
+app.use('/relative-path', bookRouter);
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -14,6 +18,8 @@ app.listen(PORT, () => {
     console.log('Server is running');
 })
 //----------------SERVER SETUP COMPLETE----------------\\
+
+
 
 //-------------------Server Side Code------------------\\
     //get data from server
@@ -32,24 +38,3 @@ app.listen(PORT, () => {
     });
 //-----------------------------------------------------\\
 
-//-------------------Client side Code-------------------\\
-    //get data from server
-    $.ajax({
-        method: "GET",
-        url: "/-u-r-l"
-    }).then((response) => {
-        console.log(':RESPONSE:', response);
-    });
-    //send data to server
-    $.ajax({
-        method: 'POST',
-        url: '/u-r-l',
-        data: {package: null},
-    }).then((response) => {
-        console.log(':POST:', response);
-    })
-    .catch((err) => {
-        console.error('POST failed', err); //?
-        console.log('POST failed', err)
-    });
-//-----------------------------------------------------\\
